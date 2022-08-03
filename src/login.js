@@ -11,7 +11,7 @@ export default function Login(){
     return(
         <>
         <div className="flex justify-center mt-8">
-        <img src="logo192.png"/>
+        <img src="logo192.png" alt=""/>
         </div>
         <div className="mt-2 text-2xl bold text-cyan-700 text-center">Task Management</div>
         <form>

@@ -14,10 +14,10 @@ export default function AddTask(){
         <div className="ml-8">
         <div className="mt-4 text-2xl font-bold">Add Task</div>
             <div className="">
-            <input className='text-center border border-cyan-700 rounded-md py-8 px-96 mt-8' type="text" placeholder="Task name" name="name" id="name" />
+            <input className='text-center border border-cyan-700 rounded-md mt-8 sm:py-2 px-8 md:py-8 px-96' type="text" placeholder="Task name" name="name" id="name" />
             </div>
             <div>
-            <input className='text-center border border-cyan-700 rounded-md py-8 px-96 mt-8' type="text" placeholder="Task details" name="detail" id="detail" />
+            <input className='text-center border border-cyan-700 rounded-md mt-8 sm:py-2 px-8 md:py-8 px-96' type="text" placeholder="Task details" name="detail" id="detail" />
             </div>
             <div>Assigned to:</div>
             <div>

@@ -16,14 +16,18 @@ export default function Navbar(){
 
     return(
         <>
-        <div className="flex h-28 bg-cyan-700">
-            <img src="logo192.png" className="mt-10 h-12 ml-8"/>
-            <p className="mt-12 ml-2 text-2xl bold text-cyan-700 text-white">Task Management</p>
-            <p className="text-white ">Mr.ABC</p>
-            <Link to="/" className="text-white ml-4">Logout</Link>
-            <button type="submit" className="text-white" onClick={onHomeClick}>Home</button>
-            <button type="submit" className="text-white ml-2" onClick={onTaskClick}>Tasks</button>
-            <button type="submit" className="text-white ml-2" onClick={onMemberClick}>Members</button>
+        <div className="h-28 bg-cyan-700">
+            <div className="flex">
+            <img src="logo192.png" className="mt-10 h-12 ml-4 sm:ml-4 md:ml-8" alt=""/>
+            <p className="mt-12 ml-2 text-white sm:text-sm mt-4 md:text-2xl mt-12">Task Management</p>
+            <p className="text-white ml-auto">Mr.ABC</p>
+            <Link to="/" className="text-white ml-4 md:mr-12 sm:mr-4">Logout</Link>
+            </div>
+            <div className="flex justify-end  md:mr-12 sm:mr-4">
+            <button type="submit" className="bg-cyan-500 rounded-md px-2 py-1 text-white" onClick={onHomeClick}>Home</button>
+            <button type="submit" className="bg-cyan-500 rounded-md px-2 py-1 text-white ml-2" onClick={onTaskClick}>Tasks</button>
+            <button type="submit" className="bg-cyan-500 rounded-md px-2 py-1 text-white ml-2" onClick={onMemberClick}>Members</button>
+            </div>
         </div>
         </>
     )
