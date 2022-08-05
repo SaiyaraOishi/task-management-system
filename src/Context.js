@@ -24,10 +24,15 @@ function UserContextProvider(props){
         updateLocalStorage(tempState);
     }
 
+    const logout = () =>{
+        setState(INITIAL_STATE);
+        updateLocalStorage(INITIAL_STATE);
+    }
+
 
     return (
         <>
-            <UserContext.Provider value={{ ...state, setName }}>
+            <UserContext.Provider value={{ ...state, setName, logout }}>
                 {props.children}
             </UserContext.Provider>
         </>
