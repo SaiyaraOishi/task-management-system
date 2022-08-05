@@ -10,15 +10,12 @@ export default function Login(){
     const navigate=useNavigate();
     function handleSubmit(){
         setContextName(name);
-        console.log(name);
         navigate("/dashboard");
     }
 
     const handleNameChange = (e) => {
         setName(e.target.value);
     }
-
-    console.log(name)
 
     return(
         <>
