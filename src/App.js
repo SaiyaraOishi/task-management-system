@@ -5,9 +5,11 @@ import Dashboard from './Dashboard';
 import Tasks from './Tasks';
 import Members from './Members';
 import AddTask from './AddTask';
+import {UserContextProvider} from "./Context.js";
 
 function App() {
   return (
+    <UserContextProvider>
     <BrowserRouter>
     <Routes>
     <Route path="/" element={<Login/>}/>
@@ -17,6 +19,7 @@ function App() {
     <Route path="/addtask" element={<AddTask/>}/>
     </Routes>
     </BrowserRouter>
+    </UserContextProvider>
   );
 }
 

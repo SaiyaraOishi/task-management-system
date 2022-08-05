@@ -1,7 +1,10 @@
-import React from "react";
+import React,{useContext} from "react";
 import {Link,useNavigate} from "react-router-dom";
+import {UserContext} from "./Context.js";
 
 export default function Navbar(){
+
+    const {name}=useContext(UserContext);
 
     const navigate=useNavigate();
     const onHomeClick=()=>{
@@ -20,7 +23,7 @@ export default function Navbar(){
             <div className="flex">
             <img src="logo192.png" className="mt-10 h-12 ml-4 sm:ml-4 md:ml-8" alt=""/>
             <p className="mt-12 ml-2 text-white sm:text-sm mt-4 md:text-2xl mt-12">Task Management</p>
-            <p className="text-white ml-auto">Mr.ABC</p>
+            <p className="text-white ml-auto">{name}</p>
             <Link to="/" className="text-white ml-4 md:mr-12 sm:mr-4">Logout</Link>
             </div>
             <div className="flex justify-end  md:mr-12 sm:mr-4">
