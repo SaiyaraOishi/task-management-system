@@ -50,9 +50,9 @@ export default function AddTask(){
             </div>
             <div>Assigned to:</div>
             <div>
-            <select className="border border-cyan-700 rounded-md" name="member" id="member">
+            <select className="border border-cyan-700 rounded-md" name="member" id="member" value={member} onChange={handleMemberChange}>
                 {memberlist.map(member=>(
-                    <option name="member" value={member.name} onChange={handleMemberChange}>{member.name}</option>
+                    <option name="member" value={member.name}>{member.name}</option>
                 ))}
             </select>
             </div>
