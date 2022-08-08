@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import { v4 as uuid } from "uuid";
 
 const STORAGE_ID = 'taskManagementApp';
 const storageState = localStorage.getItem(STORAGE_ID);
@@ -24,6 +25,24 @@ function UserContextProvider(props){
         updateLocalStorage(tempState);
     }
 
+    const setTask = (newTask) => {
+        const uniqueId = uuid();
+        const array=[...state.tasklist];
+        array.push({id:uniqueId,...newTask});
+        let tempState={...state,tasklist:array};
+        setState(tempState);
+        updateLocalStorage(tempState);
+    }
+
+    const setMember = (newMember) => {
+        const uniqueId = uuid();
+        const array = [...state.memberlist];
+        array.push({id: uniqueId, ...newMember});
+        let tempState = {...state, memberlist: array};
+        setState(tempState);
+        updateLocalStorage(tempState);
+    }
+
     const logout = () =>{
         setState(INITIAL_STATE);
         updateLocalStorage(INITIAL_STATE);
@@ -32,7 +51,7 @@ function UserContextProvider(props){
 
     return (
         <>
-            <UserContext.Provider value={{ ...state, setName, logout }}>
+            <UserContext.Provider value={{ ...state, setName, logout, setTask, setMember }}>
                 {props.children}
             </UserContext.Provider>
         </>

@@ -5,6 +5,7 @@ import Dashboard from './Dashboard';
 import Tasks from './Tasks';
 import Members from './Members';
 import AddTask from './AddTask';
+import AddMember from './AddMember';
 import {UserContextProvider} from "./Context.js";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     <Route path="/task" element={<Tasks/>}/>
     <Route path="/member" element={<Members/>}/>
     <Route path="/addtask" element={<AddTask/>}/>
+    <Route path="/addmember" element={<AddMember/>}/>
     </Routes>
     </BrowserRouter>
     </UserContextProvider>
