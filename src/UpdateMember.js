@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import {useNavigate} from "react-router-dom";
+import {useNavigate,useParams} from "react-router-dom";
 import { UserContext } from "./Context";
 
-export default function AddMember(){
+export default function UpdateMember(){
 
     const [name,setName]=useState("");
-    const {setMember}=useContext(UserContext);
+    const {id}=useParams();
+    const {updateMember,getSingleMember}=useContext(UserContext);
 
     const handleNameChange = (e) => {
         setName(e.target.value);
@@ -15,12 +16,19 @@ export default function AddMember(){
     const nameIsValid=name.trim().length>0;
 
     const navigate=useNavigate();
-    const onSubmitMember = () =>{
+    const onUpdateMember = () =>{
         if(nameIsValid){
-            setMember({name: name});
+            updateMember(id, {name: name});
             navigate("/member");
         }
     }
+
+    const member=getSingleMember(id);
+    useEffect(()=>{
+        if(member){
+            setName(member.name);
+        }
+    },[member]);
 
     const onCancel=()=>{
         navigate("/member");
@@ -36,7 +44,7 @@ export default function AddMember(){
         <div className="text-red-600">{!nameIsValid && <p>*Name is required</p>}</div>
         </div>
         <button type="submit" className="mt-8 bg-blue-500 px-4 py-2 text-white rounded-md" onClick={onCancel}>Cancel</button>
-        <button type="submit" className="ml-8 mt-8 bg-blue-500 px-4 py-2 text-white rounded-md" onClick={onSubmitMember}>Submit</button>
+        <button type="submit" className="ml-8 mt-8 bg-blue-500 px-4 py-2 text-white rounded-md" onClick={onUpdateMember}>Update</button>
         </div>
         </>
     )

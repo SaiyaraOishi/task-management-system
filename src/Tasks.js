@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Navbar from "./Navbar";
-import {useNavigate,Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import { UserContext } from "./Context";
 
 export default function Tasks(){
@@ -11,6 +11,11 @@ export default function Tasks(){
     const onAddTask=()=>{
         navigate("/addtask");
     }
+
+    const handleUpdate = (id) =>{
+        navigate(`/task/${id}`);
+    }
+
     return(
         <>
         <Navbar/>
@@ -23,7 +28,10 @@ export default function Tasks(){
         <ol>
             {tasklist.map(task=>(
                 <div className="underline text-blue-600">
-                <li><Link to="">{task.title}</Link></li>
+                <li>
+                    <p onClick={()=>handleUpdate(task.id)}>{task.title} &nbsp;&nbsp; {task.member}</p>
+                    {/* <button onClick={()=>handleUpdate(task.id)}>Edit</button> */}
+                </li>
                 </div>
             ))}
         </ol>

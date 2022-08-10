@@ -7,6 +7,8 @@ import Members from './Members';
 import AddTask from './AddTask';
 import AddMember from './AddMember';
 import {UserContextProvider} from "./Context.js";
+import UpdateTask from './UpdateTask';
+import UpdateMember from './UpdateMember';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
     <Route path="/member" element={<Members/>}/>
     <Route path="/addtask" element={<AddTask/>}/>
     <Route path="/addmember" element={<AddMember/>}/>
+    <Route path="/task/:id" element={<UpdateTask/>}/>
+    <Route path="/member/:id" element={<UpdateMember/>}/>
     </Routes>
     </BrowserRouter>
     </UserContextProvider>

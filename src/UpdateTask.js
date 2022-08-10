@@ -1,24 +1,34 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import Navbar from "./Navbar";
-import {useNavigate} from "react-router-dom";
+import {useNavigate,useParams} from "react-router-dom";
 import { UserContext } from "./Context";
 
-export default function AddTask(){
+export default function UpdateTask(){
 
     const [title,setTitle]=useState("");
     const [detail,setDetail]=useState("");
     const [member,setMember]=useState("");
-    const {setTask,memberlist}=useContext(UserContext);
+    const {id}=useParams();
+    const {updateTask,memberlist,getSingleTask}=useContext(UserContext);
 
     const titleIsValid=title.trim().length>0;
 
     const navigate=useNavigate();
-    const onSubmitTask=()=>{
+    const onUpdateTask=()=>{
         if(titleIsValid){
-            setTask({title:title,detail:detail,member: member})
-            navigate("/task");
+            updateTask(id, {title:title,detail:detail,member: member});
+            navigate("/task",{replace:true});
         }
     }
+
+    const task=getSingleTask(id);
+    useEffect(()=>{
+        if(task){
+            setTitle(task.title);
+            setDetail(task.detail);
+        }
+
+    },[task]);
 
     const onCancel=()=>{
         navigate("/task");
@@ -57,7 +67,7 @@ export default function AddTask(){
             </select>
             </div>
             <button type="submit" className="mt-8 bg-blue-500 px-4 py-2 text-white rounded-md" onClick={onCancel}>Cancel</button>
-            <button type="submit" className="ml-8 mt-8 bg-blue-500 px-4 py-2 text-white rounded-md" onClick={onSubmitTask}>Submit</button>
+            <button type="submit" className="ml-8 mt-8 bg-blue-500 px-4 py-2 text-white rounded-md" onClick={onUpdateTask}>Update</button>
         </div>
         </>
     )

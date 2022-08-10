@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Navbar from "./Navbar";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import { UserContext } from "./Context";
 
 export default function Members(){
@@ -11,6 +11,11 @@ export default function Members(){
     const onAddMember=()=>{
         navigate("/addmember");
     }
+
+    const handleUpdateMember = (id) =>{
+        navigate(`/member/${id}`);
+    }
+
     return(
         <>
         <Navbar/>
@@ -23,7 +28,9 @@ export default function Members(){
             <ol>
                 {memberlist.map(member=>(
                     <div className="underline text-blue-600">
-                    <li><Link to="">{member.name}</Link></li>
+                    <li>
+                        <p onClick={()=>handleUpdateMember(member.id)}>{member.name}</p>
+                    </li>
                     </div>
                 ))}
             </ol>
