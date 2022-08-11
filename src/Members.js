@@ -5,7 +5,7 @@ import { UserContext } from "./Context";
 
 export default function Members(){
 
-    const {memberlist} = useContext(UserContext);
+    const {memberlist,tasklist} = useContext(UserContext);
     //have to use useParams to go to details of a member from the memberlist
     const navigate=useNavigate();
     const onAddMember=()=>{
@@ -27,9 +27,12 @@ export default function Members(){
         <div>
             <ol>
                 {memberlist.map(member=>(
-                    <div className="underline text-blue-600">
-                    <li>
+                    <div>
+                    <li className="flex">
+                        <div className=" underline text-blue-600">
                         <p onClick={()=>handleUpdateMember(member.id)}>{member.name}</p>
+                        </div>
+                        <p className="text-blue-600"> &nbsp; &nbsp; {tasklist.filter(task=>(task.member===member.name)).length}tasks</p>
                     </li>
                     </div>
                 ))}

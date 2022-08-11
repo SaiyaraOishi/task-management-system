@@ -27,9 +27,12 @@ export default function Tasks(){
         <div>
         <ol>
             {tasklist.map(task=>(
-                <div className="underline text-blue-600">
-                <li>
-                    <p onClick={()=>handleUpdate(task.id)}>{task.title} &nbsp;&nbsp; {task.member}</p>
+                <div className="">
+                <li className="flex">
+                    <div className=" underline text-blue-600">
+                        <p onClick={()=>handleUpdate(task.id)}>{task.title}</p>
+                    </div>
+                    <p className="text-blue-600"> &nbsp;&nbsp; {task.member}</p>
                     {/* <button onClick={()=>handleUpdate(task.id)}>Edit</button> */}
                 </li>
                 </div>

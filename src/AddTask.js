@@ -51,8 +51,9 @@ export default function AddTask(){
             <div>Assigned to:</div>
             <div>
             <select className="border border-cyan-700 rounded-md" name="member" id="member" value={member} onChange={handleMemberChange}>
-                {memberlist.map(member=>(
-                    <option name="member" value={member.name}>{member.name}</option>
+                <option select hidden>Please select a value</option>
+                {memberlist.map((member,key)=>(
+                    <option name="member" value={member.name} key={key}>{member.name}</option>
                 ))}
             </select>
             </div>

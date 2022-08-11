@@ -34,7 +34,7 @@ export default function Navbar(){
             <Link to="/" className="text-white ml-4 md:mr-12 sm:mr-4" onClick={logout}>Logout</Link>
             </div>
             <div className="flex justify-end  md:mr-12 sm:mr-4">
-            <button type="submit" className="bg-cyan-500 rounded-md px-2 py-1 text-white" onClick={onHomeClick}>Home</button>
+            <button type="submit" className="bg-cyan-500 rounded-md px-2 py-1 text-white " onClick={onHomeClick}>Home</button>
             <button type="submit" className="bg-cyan-500 rounded-md px-2 py-1 text-white ml-2" onClick={onTaskClick}>Tasks</button>
             <button type="submit" className="bg-cyan-500 rounded-md px-2 py-1 text-white ml-2" onClick={onMemberClick}>Members</button>
             </div>
