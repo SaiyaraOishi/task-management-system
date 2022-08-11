@@ -6,7 +6,6 @@ import { UserContext } from "./Context";
 export default function Tasks(){
 
     const {tasklist} = useContext(UserContext);
-    //have to use useParams to go to details of a task from the tasklist and edit
     const navigate=useNavigate();
     const onAddTask=()=>{
         navigate("/addtask");

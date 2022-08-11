@@ -6,7 +6,6 @@ import { UserContext } from "./Context";
 export default function Members(){
 
     const {memberlist,tasklist} = useContext(UserContext);
-    //have to use useParams to go to details of a member from the memberlist
     const navigate=useNavigate();
     const onAddMember=()=>{
         navigate("/addmember");
