@@ -58,6 +58,7 @@ function UserContextProvider(props){
         const vtask = newList.find(task => task.id === id);
         vtask.title = task.title;
         vtask.detail = task.detail;
+        vtask.member = task.member;
         let tempState={ ...state, tasklist: newList };
         setState(tempState);
         updateLocalStorage(tempState);

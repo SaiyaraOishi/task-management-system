@@ -61,6 +61,7 @@ export default function UpdateTask(){
             <div>Assigned to:</div>
             <div>
             <select className="border border-cyan-700 rounded-md" name="member" id="member" value={member} onChange={handleMemberChange}>
+            <option select hidden>Please select a value</option>
                 {memberlist.map(member=>(
                     <option name="member" value={member.name}>{member.name}</option>
                 ))}
