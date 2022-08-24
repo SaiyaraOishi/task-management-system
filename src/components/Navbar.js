@@ -1,7 +1,10 @@
 import {Link,useNavigate} from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Navbar(){
 
+    const user = useSelector((state)=> state.user);
+    const {name} = user;
     const navigate=useNavigate();
 
     const onHomeClick=()=>{
@@ -20,7 +23,7 @@ export default function Navbar(){
             <div className="flex">
             <img src="logo192.png" className="mt-10 h-12 ml-4 sm:ml-4 md:ml-8" alt=""/>
             <p className="mt-12 ml-2 text-white sm:text-sm mt-4 md:text-2xl mt-12">Task Management</p>
-            <p className="text-white ml-auto mt-2">Oishi</p>
+            <p className="text-white ml-auto mt-2">{name}</p>
             <Link to="/" className="text-white ml-4 mt-2 md:mr-12 sm:mr-4">Logout</Link>
             </div>
             <div className="flex justify-end  md:mr-12 sm:mr-4">

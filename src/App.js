@@ -7,10 +7,13 @@ import AddMember from "./components/AddMember";
 import AddTask from "./components/AddTask";
 import UpdateMember from "./components/UpdateMember";
 import UpdateTask from "./components/UpdateTask";
+import {Provider} from "react-redux";
+import store from "./redux/store";
 
 function App() {
   return (
     <>
+    <Provider store={store}>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Login/>}/>
@@ -23,6 +26,7 @@ function App() {
       <Route path="/member/:id" element={<UpdateMember/>}/>
     </Routes>
     </BrowserRouter>
+    </Provider>
     </>
   );
 }

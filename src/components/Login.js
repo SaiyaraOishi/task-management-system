@@ -1,16 +1,20 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {addName} from "../redux/user/actions";
 
 export default function Login(){
 
     const [name,setName]=useState("");
+    const dispatch = useDispatch();
 
     const formIsValid=name.trim().length>0;
 
     const navigate=useNavigate();
     function onSubmitClick(){
         if(formIsValid){
-        navigate("/dashboard");
+            dispatch(addName(name));
+            navigate("/dashboard");
         }
     }
 
