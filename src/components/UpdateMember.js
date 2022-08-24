@@ -41,7 +41,7 @@ export default function UpdateMember(){
         <>
         <Navbar/>
         <div className="ml-8">
-        <div className="mt-4 text-2xl font-bold">Add Member</div>
+        <div className="mt-4 text-2xl font-bold">Update Member</div>
         <div className="">
         <input className='text-center border border-cyan-700 rounded-md mt-8 sm:py-2 px-8 md:py-8 md:px-96' type="text" placeholder="Name" name="name" id="name" value={name} onChange={handleNameChange}/>
         <div className="text-red-600">{!nameIsValid && <p>*Name is required</p>}</div>
