@@ -29,6 +29,7 @@ export default function UpdateTask(){
         if(task){
             setTitle(task.title);
             setDetail(task.detail);
+            setMember(task.member);
         }
 
     },[task]);
