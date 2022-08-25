@@ -29,7 +29,7 @@ export default function Members(){
                 {members.map(member=>(
                     <div>
                     <li className="flex">
-                        <div className=" underline text-blue-600">
+                        <div className="underline text-blue-600">
                         <p onClick={()=>handleUpdateMember(member.id)}>{member.name}</p>
                         </div>
                         <p className="text-blue-600 ml-auto underline">{tasks.filter(task=>(task.member===member.name)).length}tasks</p>

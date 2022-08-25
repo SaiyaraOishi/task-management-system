@@ -54,7 +54,7 @@ export default function UpdateTask(){
         <>
         <Navbar/>
         <div className="ml-8">
-        <div className="mt-4 text-2xl font-bold">Add Task</div>
+        <div className="mt-4 text-2xl font-bold">Update Task</div>
             <div className="">
             <input className='text-center border border-cyan-700 rounded-md mt-8 sm:py-2 px-8 md:py-8 md:px-96' type="text" placeholder="Task name" name="title" id="title" value={title} onChange={handleTitleChange}/>
             <div className="text-red-600">{!titleIsValid && <p>*Title is required</p>}</div>
