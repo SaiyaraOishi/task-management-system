@@ -6,6 +6,7 @@ export default function Members(){
 
     const navigate=useNavigate();
     const members = useSelector((state)=>state.members);
+    const tasks = useSelector((state) => state.tasks);
 
     const onAddMember=()=>{
         navigate("/addmember");
@@ -31,7 +32,7 @@ export default function Members(){
                         <div className=" underline text-blue-600">
                         <p onClick={()=>handleUpdateMember(member.id)}>{member.name}</p>
                         </div>
-                        {/* <p className="text-blue-600 ml-auto underline">{tasklist.filter(task=>(task.member===member.name)).length}tasks</p> */}
+                        <p className="text-blue-600 ml-auto underline">{tasks.filter(task=>(task.member===member.name)).length}tasks</p>
                     </li>
                     </div>
                 ))}
