@@ -1,16 +1,20 @@
 import Navbar from "./Navbar";
 import {useNavigate} from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getSingleTask } from "../redux/tasks/actions";
 
 export default function Tasks(){
 
     const navigate=useNavigate();
-    const tasks = useSelector((state) => state.tasks);
+    const tasks = useSelector((state) => state.tasks.tasklist);
+    const dispatch = useDispatch();
+
     const onAddTask=()=>{
         navigate("/addtask");
     }
 
     const handleUpdateTask = (id) =>{
+        dispatch(getSingleTask(id));
         navigate(`/task/${id}`);
     }
 

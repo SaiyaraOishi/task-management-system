@@ -10,7 +10,7 @@ export default function AddTask(){
     const [detail,setDetail]=useState("");
     const [member,setMember]=useState("");
     const dispatch = useDispatch();
-    const members = useSelector((state)=>state.members);
+    const members = useSelector((state)=>state.members.memberlist);
 
     const titleIsValid=title.trim().length>0;
 

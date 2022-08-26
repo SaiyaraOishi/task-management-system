@@ -9,7 +9,7 @@ export default function UpdateMember(){
 
     const [name,setName]=useState("");
     const {id}=useParams();
-    const members = useSelector((state)=>state.members);
+    const member = useSelector((state)=>state.members.member);
     const dispatch = useDispatch();
 
 
@@ -19,7 +19,7 @@ export default function UpdateMember(){
 
     const nameIsValid=name.trim().length>0;
 
-    const member=members.find((member=>member.id===id));
+    
     const navigate=useNavigate();
     const onUpdateMember = () =>{
         if(nameIsValid){

@@ -10,8 +10,8 @@ export default function UpdateTask(){
     const [detail,setDetail]=useState("");
     const [member,setMember]=useState("");
     const {id}=useParams();
-    const tasks = useSelector((state) => state.tasks);
-    const members = useSelector((state) => state.members);
+    const task = useSelector((state) => state.tasks.task);
+    const members = useSelector((state) => state.members.memberlist);
     const dispatch = useDispatch();
 
     const titleIsValid=title.trim().length>0;
@@ -24,7 +24,6 @@ export default function UpdateTask(){
         }
     }
 
-    const task = tasks.find((task=>task.id===id));
     useEffect(()=>{
         if(task){
             setTitle(task.title);

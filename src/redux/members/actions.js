@@ -1,4 +1,4 @@
-import { ADD_MEMBER, UPDATE_MEMBER } from "./actionType";
+import { ADD_MEMBER, UPDATE_MEMBER, GET_SINGLE_MEMBER } from "./actionType";
 
 export const addMember = ({name}) =>{
     return {
@@ -16,5 +16,12 @@ export const updateMember = (id,{name}) => {
             id: id,
             name: name
         }
+    }
+}
+
+export const getSingleMember = (id) => {
+    return {
+        type: GET_SINGLE_MEMBER,
+        payload: id
     }
 }

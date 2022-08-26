@@ -1,29 +1,38 @@
-import { ADD_MEMBER, UPDATE_MEMBER } from "./actionType";
+import { ADD_MEMBER, GET_SINGLE_MEMBER, UPDATE_MEMBER } from "./actionType";
 import { v4 as uuid } from "uuid";
 
-const initialState = [];
+const initialState = {
+    memberlist: [],
+    member: {}
+};
 
 const memberReducer = (state=initialState,action) => {
     switch(action.type){
         case ADD_MEMBER:
-            return [
+            const uniqueId = uuid();
+            const name = action.payload.name;
+            const array = [...state.memberlist];
+            array.push({ id: uniqueId, name: name });
+            return {
                 ...state,
-                {
-                    id: uuid(),
-                    name: action.payload.name,
-                }
-            ]
+                memberlist: array,
+            }
 
         case UPDATE_MEMBER:
-            return state.map((member) => {
-                if(member.id!==action.payload.id){
-                    return member;
-                }
-                return{
-                    ...member,
-                    name: action.payload.name
-                }
-            });
+          const newlist = state.memberlist;
+          const vmember = newlist.find((member) => member.id === action.payload.id);
+          vmember.name = action.payload.name;
+          return {
+            ...state,
+            memberlist: [...newlist]
+          }
+
+        case GET_SINGLE_MEMBER:
+            const single_member = state.memberlist.find((member) => member.id === action.payload);
+            return {
+                ...state,
+                member: single_member,
+            }
 
         default:
             return state;

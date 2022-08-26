@@ -1,18 +1,21 @@
 import Navbar from "./Navbar";
 import {useNavigate} from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getSingleMember } from "../redux/members/actions";
 
 export default function Members(){
 
     const navigate=useNavigate();
-    const members = useSelector((state)=>state.members);
-    const tasks = useSelector((state) => state.tasks);
+    const members = useSelector((state)=>state.members.memberlist);
+    const tasks = useSelector((state) => state.tasks.tasklist);
+    const dispatch = useDispatch();
 
     const onAddMember=()=>{
         navigate("/addmember");
     }
 
     const handleUpdateMember = (id) =>{
+        dispatch(getSingleMember(id));
         navigate(`/member/${id}`);
     }
 
