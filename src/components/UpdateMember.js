@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import {useNavigate,useParams} from "react-router-dom";
 import {useSelector , useDispatch} from "react-redux";
 import {updateMember} from "../redux/members/actions";
+import { updateMemberName } from "../redux/tasks/actions";
 
 export default function UpdateMember(){
 
@@ -18,21 +19,23 @@ export default function UpdateMember(){
 
     const nameIsValid=name.trim().length>0;
 
+    const member=members.find((member=>member.id===id));
     const navigate=useNavigate();
     const onUpdateMember = () =>{
         if(nameIsValid){
             dispatch(updateMember(id, {name: name}));
+            dispatch(updateMemberName({oldName: member.name, newName: name}));
             navigate("/member");
         }
     }
-
-    const member=members.find((member=>member.id===id));
+    
     useEffect(()=>{
         if(member){
             setName(member.name);
         }
     },[member]);
 
+    
     const onCancel=()=>{
         navigate("/member");
     }

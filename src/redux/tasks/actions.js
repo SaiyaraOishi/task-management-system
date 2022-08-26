@@ -1,4 +1,4 @@
-import { ADD_TASK, UPDATE_TASK } from "./actionType";
+import { ADD_TASK, UPDATE_MEMBER_NAME, UPDATE_TASK } from "./actionType";
 
 export const addTask = ({title,detail,member}) =>{
     return {
@@ -19,6 +19,16 @@ export const updateTask = (id, {title,detail,member}) => {
             title: title,
             detail: detail,
             member: member,
+        }
+    }
+}
+
+export const updateMemberName = ({oldName, newName}) => {
+    return {
+        type: UPDATE_MEMBER_NAME,
+        payload: {
+             oldName,
+             newName,
         }
     }
 }
