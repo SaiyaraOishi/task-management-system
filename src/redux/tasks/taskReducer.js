@@ -34,12 +34,28 @@ const taskReducer = (state=initialState,action) => {
         case UPDATE_MEMBER_NAME:
             const {oldName , newName} = action.payload;
             const newlist = state.tasklist;
-            const mtask = newlist.find((task) => task.member === oldName);
-            mtask.member = newName;
+            const maplist = newlist.map((task) => {
+                if(task.member !== oldName){
+                    return task
+                }
+                return {
+                    ...task,
+                    member: newName,
+                }
+            });
             return {
                 ...state,
-                tasklist: [...newlist]
+                tasklist: [...maplist]
             }
+            // return state.tasklist.map((task) => {
+            //     if(task.member !== oldName){
+            //         return task;
+            //     }
+            //     return {
+            //         ...task,
+            //         member: newName
+            //     }
+            // });
 
             case GET_SINGLE_TASK:
                 const single_task = state.tasklist.find((task) => task.id === action.payload);

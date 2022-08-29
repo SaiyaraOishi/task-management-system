@@ -23,8 +23,10 @@ export default function UpdateMember(){
     const navigate=useNavigate();
     const onUpdateMember = () =>{
         if(nameIsValid){
+            console.log(member.name);
+            console.log(name);
+            dispatch(updateMemberName({oldName: member.name, newName: name}));//should be done before updating name otherwise member.name and name becomes same
             dispatch(updateMember(id, {name: name}));
-            dispatch(updateMemberName({oldName: member.name, newName: name}));
             navigate("/member");
         }
     }
