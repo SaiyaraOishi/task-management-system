@@ -1,4 +1,4 @@
-import { ADD_TASK, GET_SINGLE_TASK, UPDATE_MEMBER_NAME, UPDATE_TASK } from "./actionType";
+import { ADD_TASK, GET_SINGLE_TASK, LOGOUT, UPDATE_MEMBER_NAME, UPDATE_TASK } from "./actionType";
 
 export const addTask = ({title,detail,member}) =>{
     return {
@@ -37,5 +37,11 @@ export const getSingleTask = (id) => {
     return {
         type: GET_SINGLE_TASK,
         payload: id
+    }
+}
+
+export const taskLogout = () => {
+    return {
+        type: LOGOUT
     }
 }

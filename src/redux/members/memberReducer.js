@@ -1,4 +1,4 @@
-import { ADD_MEMBER, GET_SINGLE_MEMBER, UPDATE_MEMBER } from "./actionType";
+import { ADD_MEMBER, GET_SINGLE_MEMBER, LOGOUT, UPDATE_MEMBER } from "./actionType";
 import { v4 as uuid } from "uuid";
 
 const initialState = {
@@ -33,6 +33,9 @@ const memberReducer = (state=initialState,action) => {
                 ...state,
                 member: single_member,
             }
+
+        case LOGOUT:
+            return initialState;
 
         default:
             return state;

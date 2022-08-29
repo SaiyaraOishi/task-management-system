@@ -1,4 +1,4 @@
-import {ADD_NAME} from "./actionType";
+import {ADD_NAME, LOGOUT} from "./actionType";
 
 const initialState = {
     name: "",
@@ -11,6 +11,9 @@ const userReducer = (state=initialState,action) =>{
                 ...state,
                 name: action.payload,
             }
+
+        case LOGOUT:
+            return initialState;
 
         default:
             return state;

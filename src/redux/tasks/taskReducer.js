@@ -1,4 +1,4 @@
-import { ADD_TASK, GET_SINGLE_TASK, UPDATE_MEMBER_NAME, UPDATE_TASK } from "./actionType";
+import { ADD_TASK, GET_SINGLE_TASK, LOGOUT, UPDATE_MEMBER_NAME, UPDATE_TASK } from "./actionType";
 import { v4 as uuid } from "uuid";
 
 const initialState = {
@@ -63,6 +63,9 @@ const taskReducer = (state=initialState,action) => {
                     ...state,
                     task: single_task,
                 }
+
+            case LOGOUT:
+                return initialState;
 
         default:
             return state;
