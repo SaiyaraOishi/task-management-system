@@ -31,7 +31,7 @@ export default function Tasks() {
                         {tasks.map(task => (
                             <div className="">
                                 <li className="flex">
-                                    <div className="underline text-blue-600">
+                                    <div className="underline text-blue-600 cursor-pointer">
                                         <p onClick={() => handleUpdateTask(task.id)}>{task.title}</p>
                                     </div>
                                     <p className="text-blue-600 ml-auto underline">{task.member}</p>
