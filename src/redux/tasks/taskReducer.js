@@ -6,8 +6,8 @@ const initialState = {
     task: {}
 };
 
-const taskReducer = (state=initialState,action) => {
-    switch(action.type){
+const taskReducer = (state = initialState, action) => {
+    switch (action.type) {
         case ADD_TASK:
             const uniqueId = uuid();
             const title = action.payload.title;
@@ -32,10 +32,10 @@ const taskReducer = (state=initialState,action) => {
             }
 
         case UPDATE_MEMBER_NAME:
-            const {oldName , newName} = action.payload;
+            const { oldName, newName } = action.payload;
             const newlist = state.tasklist;
             const maplist = newlist.map((task) => {
-                if(task.member !== oldName){
+                if (task.member !== oldName) {
                     return task
                 }
                 return {
@@ -47,29 +47,29 @@ const taskReducer = (state=initialState,action) => {
                 ...state,
                 tasklist: [...maplist]
             }
-            // return state.tasklist.map((task) => {
-            //     if(task.member !== oldName){
-            //         return task;
-            //     }
-            //     return {
-            //         ...task,
-            //         member: newName
-            //     }
-            // });
+        // return state.tasklist.map((task) => {
+        //     if(task.member !== oldName){
+        //         return task;
+        //     }
+        //     return {
+        //         ...task,
+        //         member: newName
+        //     }
+        // });
 
-            case GET_SINGLE_TASK:
-                const single_task = state.tasklist.find((task) => task.id === action.payload);
-                return {
-                    ...state,
-                    task: single_task,
-                }
+        case GET_SINGLE_TASK:
+            const single_task = state.tasklist.find((task) => task.id === action.payload);
+            return {
+                ...state,
+                task: single_task,
+            }
 
-            case LOGOUT:
-                return initialState;
+        case LOGOUT:
+            return initialState;
 
         default:
             return state;
     }
-} 
+}
 
 export default taskReducer;

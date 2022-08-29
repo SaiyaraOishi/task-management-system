@@ -6,8 +6,8 @@ const initialState = {
     member: {}
 };
 
-const memberReducer = (state=initialState,action) => {
-    switch(action.type){
+const memberReducer = (state = initialState, action) => {
+    switch (action.type) {
         case ADD_MEMBER:
             const uniqueId = uuid();
             const name = action.payload.name;
@@ -19,13 +19,13 @@ const memberReducer = (state=initialState,action) => {
             }
 
         case UPDATE_MEMBER:
-          const newlist = state.memberlist;
-          const vmember = newlist.find((member) => member.id === action.payload.id);
-          vmember.name = action.payload.name;
-          return {
-            ...state,
-            memberlist: [...newlist]
-          }
+            const newlist = state.memberlist;
+            const vmember = newlist.find((member) => member.id === action.payload.id);
+            vmember.name = action.payload.name;
+            return {
+                ...state,
+                memberlist: [...newlist]
+            }
 
         case GET_SINGLE_MEMBER:
             const single_member = state.memberlist.find((member) => member.id === action.payload);

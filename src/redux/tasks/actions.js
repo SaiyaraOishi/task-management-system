@@ -1,6 +1,6 @@
 import { ADD_TASK, GET_SINGLE_TASK, LOGOUT, UPDATE_MEMBER_NAME, UPDATE_TASK } from "./actionType";
 
-export const addTask = ({title,detail,member}) =>{
+export const addTask = ({ title, detail, member }) => {
     return {
         type: ADD_TASK,
         payload: {
@@ -11,7 +11,7 @@ export const addTask = ({title,detail,member}) =>{
     }
 }
 
-export const updateTask = (id, {title,detail,member}) => {
+export const updateTask = (id, { title, detail, member }) => {
     return {
         type: UPDATE_TASK,
         payload: {
@@ -23,12 +23,12 @@ export const updateTask = (id, {title,detail,member}) => {
     }
 }
 
-export const updateMemberName = ({oldName, newName}) => {
+export const updateMemberName = ({ oldName, newName }) => {
     return {
         type: UPDATE_MEMBER_NAME,
         payload: {
-             oldName,
-             newName,
+            oldName,
+            newName,
         }
     }
 }
