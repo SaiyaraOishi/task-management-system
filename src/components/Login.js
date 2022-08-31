@@ -14,8 +14,8 @@ export default function Login() {
         },
         validate: values => {
             let errors = {};
-            if(!values.name){
-                errors.name="*Name is required";
+            if (!values.name) {
+                errors.name = "*Name is required";
             }
             return errors;
         },
