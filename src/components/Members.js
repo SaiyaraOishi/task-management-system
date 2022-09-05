@@ -2,6 +2,8 @@ import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getSingleMember } from "../redux/members/actions";
+import { useEffect } from "react";
+import fetchMembers from "../redux/members/thunk/fetchMembers";
 
 export default function Members() {
 
@@ -10,6 +12,10 @@ export default function Members() {
     const tasks = useSelector((state) => state.tasks.tasklist);
     const dispatch = useDispatch();
 
+    useEffect(()=>{
+        dispatch(fetchMembers);
+    },[dispatch]);
+
     const onAddMember = () => {
         navigate("/addmember");
     }
@@ -17,7 +23,7 @@ export default function Members() {
     const handleUpdateMember = (id) => {
         dispatch(getSingleMember(id));
         navigate(`/member/${id}`);
-    }
+    }  
 
     return (
         <>

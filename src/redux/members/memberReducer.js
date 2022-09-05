@@ -1,4 +1,4 @@
-import { ADD_MEMBER, GET_SINGLE_MEMBER, LOGOUT, UPDATE_MEMBER } from "./actionType";
+import { ADD_MEMBER, GET_MEMBER, GET_SINGLE_MEMBER, LOGOUT, UPDATE_MEMBER } from "./actionType";
 import { v4 as uuid } from "uuid";
 
 const initialState = {
@@ -8,6 +8,13 @@ const initialState = {
 
 const memberReducer = (state = initialState, action) => {
     switch (action.type) {
+
+        case GET_MEMBER:
+            return {
+                ...state,
+                memberlist: action.payload
+            }
+
         case ADD_MEMBER:
             const uniqueId = uuid();
             const name = action.payload.name;

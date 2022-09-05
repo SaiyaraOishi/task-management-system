@@ -13,7 +13,7 @@ export default function Tasks() {
 
     useEffect(()=>{
         dispatch(fetchTasks);
-    },[fetchTasks]);
+    },[dispatch]);
 
     const onAddTask = () => {
         navigate("/addtask");
