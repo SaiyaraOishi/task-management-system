@@ -10,6 +10,7 @@ import UpdateTask from "./components/UpdateTask";
 import { Provider } from "react-redux";
 import store, { persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
+import Data from "./components/datapage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route path="/addmember" element={<AddMember />} />
               <Route path="/task/:id" element={<UpdateTask />} />
               <Route path="/member/:id" element={<UpdateMember />} />
+              <Route path="/data" element={<Data/>}/>
             </Routes>
           </BrowserRouter>
         </PersistGate>

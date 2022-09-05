@@ -2,12 +2,18 @@ import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getSingleTask } from "../redux/tasks/actions";
+import { useEffect } from "react";
+import fetchTasks from "../redux/tasks/thunk/fetchTask";
 
 export default function Tasks() {
 
     const navigate = useNavigate();
     const tasks = useSelector((state) => state.tasks.tasklist);
     const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(fetchTasks);
+    },[fetchTasks]);
 
     const onAddTask = () => {
         navigate("/addtask");
