@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addTask } from "../redux/tasks/actions";
+import addTaskToDb from "../redux/tasks/thunk/addTask";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import FormikControl from "../Formik/FormikControl";
@@ -31,7 +31,7 @@ export default function AddTask() {
         title: Yup.string().required("*Title is required")
     })
     const onSubmit = values => {
-        dispatch(addTask({ title: values.title, detail: values.detail, member: values.member }));
+        dispatch(addTaskToDb({ title: values.title, detail: values.detail, member: values.member }));
         navigate("/task");
     }
 

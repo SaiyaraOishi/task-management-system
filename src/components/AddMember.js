@@ -1,10 +1,11 @@
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addMember } from "../redux/members/actions";
+// import { addMember } from "../redux/members/actions";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "../Formik/FormikControl";
+import addMemberToDb from "../redux/members/thunk/addMember";
 
 export default function AddMember() {
 
@@ -18,7 +19,7 @@ export default function AddMember() {
     name: Yup.string().required("Required"),
   });
   const onSubmit = (values) => {
-    dispatch(addMember({ name: values.name }));
+    dispatch(addMemberToDb({ name: values.name }));
     navigate("/member");
   };
 
