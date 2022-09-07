@@ -3,10 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/user/actions";
 import { taskLogout } from "../redux/tasks/actions";
 import { memberLogout } from "../redux/members/actions";
+import deleteMemberInDb from "../redux/members/thunk/deleteMember";
+import deleteTaskInDb from "../redux/tasks/thunk/deleteTask";
 
 export default function Navbar() {
 
     const user = useSelector((state) => state.user);
+    const memberlist = useSelector((state) => state.members.memberlist);
+    const tasklist = useSelector((state) => state.tasks.tasklist);
     const dispatch = useDispatch();
     const { name } = user;
     const navigate = useNavigate();
@@ -24,6 +28,8 @@ export default function Navbar() {
         dispatch(logout());
         dispatch(taskLogout());
         dispatch(memberLogout());
+        memberlist.map((member) => dispatch(deleteMemberInDb(member.id)));
+        tasklist.map((task) => dispatch(deleteTaskInDb(task.id)));
         navigate("/");
     }
 
