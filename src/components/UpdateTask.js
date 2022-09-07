@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { updateTask } from "../redux/tasks/actions";
+import updateTaskToDb from "../redux/tasks/thunk/updateTask";
 
 export default function UpdateTask() {
 
@@ -19,7 +19,7 @@ export default function UpdateTask() {
     const navigate = useNavigate();
     const onUpdateTask = () => {
         if (titleIsValid) {
-            dispatch(updateTask(id, { title: title, detail: detail, member: member }));
+            dispatch(updateTaskToDb(id, { title: title, detail: detail, member: member }));
             navigate("/task", { replace: true });
         }
     }

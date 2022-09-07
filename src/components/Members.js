@@ -13,7 +13,9 @@ export default function Members() {
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(fetchMembers);
+        setTimeout(()=>{
+            dispatch(fetchMembers);
+        },500);
     },[dispatch]);
 
     const onAddMember = () => {

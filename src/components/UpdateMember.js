@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { updateMember } from "../redux/members/actions";
-import { updateMemberName } from "../redux/tasks/actions";
+// import { updateMemberName } from "../redux/tasks/actions";
+import updateMemberToDb from "../redux/members/thunk/updateMember";
+import { updateMemberNameInDb } from "../redux/tasks/thunk/updateTask";
 
 export default function UpdateMember() {
 
@@ -25,8 +26,10 @@ export default function UpdateMember() {
         if (nameIsValid) {
             console.log(member.name);
             console.log(name);
-            dispatch(updateMemberName({ oldName: member.name, newName: name }));//should be done before updating name otherwise member.name and name becomes same
-            dispatch(updateMember(id, { name: name }));
+            // dispatch(updateMemberName({ oldName: member.name, newName: name }));
+            //should be done before updating name otherwise member.name and name becomes same
+            dispatch(updateMemberNameInDb(id, { oldName: member.name, newName: name }));
+            dispatch(updateMemberToDb(id, { name: name }));
             navigate("/member");
         }
     }
