@@ -12,6 +12,8 @@ export default function Dashboard() {
         navigate("/member");
     }
 
+    // throw new Error("ghfhdh")
+
     return (
         <>
             <Navbar />
