@@ -12,6 +12,7 @@ import store, { persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import Data from "./components/datapage";
 import { ErrorBoundary } from "./components/ErrorBoundary";
+import Register from "./components/Register";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <BrowserRouter>
             <ErrorBoundary>
               <Routes>
-                <Route path="/" element={<Login />} />
+                <Route path="/" element={<Register />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/task" element={<Tasks />} />
                 <Route path="/member" element={<Members />} />
