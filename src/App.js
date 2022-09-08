@@ -23,6 +23,7 @@ function App() {
             <ErrorBoundary>
               <Routes>
                 <Route path="/" element={<Register />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/task" element={<Tasks />} />
                 <Route path="/member" element={<Members />} />
