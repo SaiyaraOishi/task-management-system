@@ -20,7 +20,7 @@ export default function Register() {
         password: Yup.string().required("*Required"),
     });
     const onSubmit = (values) => {
-        dispatch(addName(values.name));
+        dispatch(addName({name: values.name, email: values.email, password: values.password}));
         navigate("/dashboard");
     };
 
