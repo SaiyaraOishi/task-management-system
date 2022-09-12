@@ -45,9 +45,16 @@ export default function Login() {
                                             name="name"
                                             placeholder="Enter username"
                                         />
+                                        <FormikControl
+                                            className="mt-4 text-center border border-cyan-700 rounded-md py-2"
+                                            control="input"
+                                            type="password"
+                                            name="password"
+                                            placeholder="Enter password"
+                                        />
 
                                         <button
-                                        className="bg-blue-500 mt-28 px-4 py-2 text-white rounded-md"
+                                        className="bg-blue-500 mt-20 px-4 py-2 text-white rounded-md"
                                             type="submit"
                                             disabled={!formik.isValid}
                                         >
