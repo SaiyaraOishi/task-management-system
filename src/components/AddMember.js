@@ -1,16 +1,18 @@
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { addMember } from "../redux/members/actions";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "../Formik/FormikControl";
-import addMemberToDb from "../redux/members/thunk/addMember";
+import addMemberToAPI from "../redux/members/thunk/addMember";
 
 export default function AddMember() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const token = useSelector((state) => state.user.token);
+  // console.log(token);
 
   const initialValues = {
     name: "",
@@ -18,9 +20,10 @@ export default function AddMember() {
   const validationSchema = Yup.object({
     name: Yup.string().required("Required"),
   });
-  const onSubmit = (values) => {
-    dispatch(addMemberToDb({ name: values.name }));
-    navigate("/member");
+  const onSubmit = async (values) => {
+    // dispatch(addMemberToDb({ name: values.name }));
+    // navigate("/member");
+    await addMemberToAPI( dispatch, navigate, values.name, token);
   };
 
   return (

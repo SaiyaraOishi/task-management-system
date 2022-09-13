@@ -1,22 +1,27 @@
-import firebaseDb from "../../../util/firebase";
-import { doc, setDoc } from "firebase/firestore/lite";
+import axios from "axios";
 import { addMember } from "../actions";
-import { v4 as uuid } from "uuid";
 
-const COLLECTION_NAME = "members";
+const base_url = "http://localhost:9001";
 
-const addMemberToDb = ({name}) => {
-
-    const id = uuid();
-
-    return async (dispatch) => {
-        const members = doc(firebaseDb, COLLECTION_NAME, id);
-        const response = await setDoc(members,{id: id, name: name});
-        // const response = snapshot.docs.map(doc => doc.data());
-
-        dispatch(addMember(response));
+const addMemberToAPI = async (dispatch, navigate, name, token) => {
+    try{
+        const response = await axios({
+            url: `${base_url}/private/members`,
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            method: "POST",
+            data: {
+                name
+            }
+        });
+        console.log(response.data);
+        dispatch(addMember(response.data));
+        navigate("/member");
     }
-
+    catch(error){
+        console.error(error);
+    }
 }
 
-export default addMemberToDb;
+export default addMemberToAPI;
