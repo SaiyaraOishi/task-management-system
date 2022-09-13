@@ -1,19 +1,16 @@
-import { ADD_NAME, LOGOUT } from "./actionType";
+import { ADD_USER, LOGOUT } from "./actionType";
 
 const initialState = {
-    name: "",
-    email: "",
-    password: ""
+   
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_NAME:
+        case ADD_USER:
             return {
                 ...state,
-                name: action.payload.name,
-                email: action.payload.email,
-                password: action.payload.password
+                ...action.payload.user,
+                token: action.payload.token
             }
 
         case LOGOUT:

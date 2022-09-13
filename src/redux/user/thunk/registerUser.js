@@ -1,5 +1,5 @@
 import axios from "axios";
-import { addName } from "../actions";
+import { addUser } from "../actions";
 
 const base_url="http://localhost:9001";
 
@@ -16,7 +16,7 @@ const registerUser = async (navigate, dispatch, name, email, password, password2
             }
         })
         console.log(response.data);
-        dispatch(addName({name,email,password}));
+        dispatch(addUser(response.data));
         navigate("/dashboard");
     }
     catch(error){

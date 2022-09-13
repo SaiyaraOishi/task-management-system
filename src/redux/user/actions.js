@@ -1,13 +1,9 @@
-import { ADD_NAME, LOGOUT } from "./actionType";
+import { ADD_USER, LOGOUT } from "./actionType";
 
-export const addName = ({name, email, password}) => {
+export const addUser = (user) => {
     return {
-        type: ADD_NAME,
-        payload: {
-            name,
-            email,
-            password
-        }
+        type: ADD_USER,
+        payload: user
     }
 }
 
