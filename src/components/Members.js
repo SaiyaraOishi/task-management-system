@@ -11,10 +11,11 @@ export default function Members() {
     const members = useSelector((state) => state.members.memberlist);
     const tasks = useSelector((state) => state.tasks.tasklist);
     const dispatch = useDispatch();
+    const token = useSelector((state) => state.user.token);
 
     useEffect(()=>{
         setTimeout(()=>{
-            dispatch(fetchMembers);
+            dispatch(fetchMembers(dispatch, token));
         },500);
     },[dispatch]);
 
