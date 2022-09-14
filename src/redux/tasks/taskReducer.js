@@ -18,8 +18,8 @@ const taskReducer = (state = initialState, action) => {
         case ADD_TASK:
             const uniqueId = uuid();
             const title = action.payload.title;
-            const detail = action.payload.detail;
-            const member = action.payload.member;
+            const detail = action.payload.description;
+            const member = action.payload.Member;
             const array = [...state.tasklist];
             array.push({ id: uniqueId, title: title, detail: detail, member: member });
             return {

@@ -1,22 +1,30 @@
-import firebaseDb from "../../../util/firebase";
-import { doc, setDoc } from "firebase/firestore/lite";
+import axios from "axios";
 import { addTask } from "../actions";
-import { v4 as uuid } from "uuid";
 
-const COLLECTION_NAME = "tasks";
+const base_url = "http://localhost:9001";
 
-const addTaskToDb = ({title, detail, member}) => {
-
-    const id = uuid();
-
-    return async (dispatch) => {
-        const tasks = doc(firebaseDb, COLLECTION_NAME, id);
-        const response = await setDoc(tasks,{id: id, title: title, detail: detail, member: member});
-        // const response = snapshot.docs.map(doc => doc.data());
-
-        dispatch(addTask(response));
+const addTaskToAPI = async ( navigate, title, description, memberId, token) => {
+    // console.log(title, description, memberId);
+    try{
+        const response = await axios({
+            url: `${base_url}/private/tasks`,
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            method: "POST",
+            data: {
+                title,
+                description,
+                memberId
+            }
+        });
+        console.log(response.data);
+        // dispatch(addTask(response.data));
+        navigate("/task");
     }
-
+    catch(error){
+        console.log(error);
+    }
 }
 
-export default addTaskToDb;
+export default addTaskToAPI;

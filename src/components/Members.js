@@ -44,7 +44,7 @@ export default function Members() {
                                     <div className="underline text-blue-600 cursor-pointer">
                                         <p onClick={() => handleUpdateMember(member.id)}>{member.name}</p>
                                     </div>
-                                    <p className="text-blue-600 ml-auto underline">{tasks.filter(task => (task.member === member.name)).length}tasks</p>
+                                    <p className="text-blue-600 ml-auto underline">{tasks.filter(task => (task.memberId === member.id)).length}tasks</p>
                                 </li>
                             </div>
                         ))}

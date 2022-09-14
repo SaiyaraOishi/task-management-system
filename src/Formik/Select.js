@@ -9,7 +9,7 @@ export default function Select(props) {
         {options.map((opt) => {
           console.log(opt);
           return (
-            <option key={opt.id} value={opt.name}>
+            <option key={opt.id} value={opt.id}>
               {opt.name}
             </option>
           );

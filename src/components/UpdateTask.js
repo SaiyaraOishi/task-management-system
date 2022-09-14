@@ -7,7 +7,7 @@ import updateTaskToDb from "../redux/tasks/thunk/updateTask";
 export default function UpdateTask() {
 
     const [title, setTitle] = useState("");
-    const [detail, setDetail] = useState("");
+    const [description, setDescription] = useState("");
     const [member, setMember] = useState("");
     const { id } = useParams();
     const task = useSelector((state) => state.tasks.task);
@@ -19,7 +19,7 @@ export default function UpdateTask() {
     const navigate = useNavigate();
     const onUpdateTask = () => {
         if (titleIsValid) {
-            dispatch(updateTaskToDb(id, { title: title, detail: detail, member: member }));
+            // dispatch(updateTaskToDb(id, { title: title, detail: detail, member: member }));
             navigate("/task", { replace: true });
         }
     }
@@ -27,8 +27,8 @@ export default function UpdateTask() {
     useEffect(() => {
         if (task) {
             setTitle(task.title);
-            setDetail(task.detail);
-            setMember(task.member);
+            setDescription(task.description);
+            setMember(task.Member.name);
         }
 
     }, [task]);
@@ -41,8 +41,8 @@ export default function UpdateTask() {
         setTitle(e.target.value);
     }
 
-    const handleDetailChange = (e) => {
-        setDetail(e.target.value);
+    const handleDescriptionChange = (e) => {
+        setDescription(e.target.value);
     }
 
     const handleMemberChange = (e) => {
@@ -59,7 +59,7 @@ export default function UpdateTask() {
                     <div className="text-red-600">{!titleIsValid && <p>*Title is required</p>}</div>
                 </div>
                 <div>
-                    <input className='text-center border border-cyan-700 rounded-md mt-8 sm:py-2 px-8 md:py-8 md:px-96' type="text" placeholder="Task details" name="detail" id="detail" value={detail} onChange={handleDetailChange} />
+                    <input className='text-center border border-cyan-700 rounded-md mt-8 sm:py-2 px-8 md:py-8 md:px-96' type="text" placeholder="Task details" name="detail" id="detail" value={description} onChange={handleDescriptionChange} />
                 </div>
                 <div>Assigned to:</div>
                 <div>

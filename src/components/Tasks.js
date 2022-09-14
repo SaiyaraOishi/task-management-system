@@ -10,9 +10,12 @@ export default function Tasks() {
     const navigate = useNavigate();
     const tasks = useSelector((state) => state.tasks.tasklist);
     const dispatch = useDispatch();
+    const token = useSelector((state) => state.user.token);
 
     useEffect(()=>{
-        dispatch(fetchTasks);
+        setTimeout(()=>{
+            fetchTasks(dispatch, token);
+        },500);
     },[dispatch]);
 
     const onAddTask = () => {
@@ -40,7 +43,7 @@ export default function Tasks() {
                                     <div className="underline text-blue-600 cursor-pointer">
                                         <p onClick={() => handleUpdateTask(task.id)}>{task.title}</p>
                                     </div>
-                                    <p className="text-blue-600 ml-auto underline">{task.member}</p>
+                                    <p className="text-blue-600 ml-auto underline">{task.Member.name}</p>
                                 </li>
                             </div>
                         ))}

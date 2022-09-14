@@ -4,14 +4,10 @@ import { ADD_TASK, GET_SINGLE_TASK, GET_TASK, LOGOUT, UPDATE_MEMBER_NAME, UPDATE
 
 // const COLLECTION_NAME = "tasks";
 
-export const addTask = ({ title, detail, member }) => {
+export const addTask = (task) => {
     return {
         type: ADD_TASK,
-        payload: {
-            title: title,
-            detail: detail,
-            member: member
-        }
+        payload:task
     }
 }
 
@@ -51,19 +47,8 @@ export const taskLogout = () => {
 }
 
 export const getTask = (tasks) => {
-    //async await fetch from firebase code here
-    // const getTodos = async () => {
-    //     const tests = collection(firebaseDb, COLLECTION_NAME);
-    //     const snapshot = await getDocs(tests);
-    //     const testsData = snapshot.docs.map(doc => doc.data());
-    //     console.log(testsData);
-    //     return testsData
-    // }
-    // getTodos().then(result => console.log(result))
-    // console.log(data);
     return {
         type: GET_TASK,
-        //data pass through payload
         payload: tasks
     }
 }

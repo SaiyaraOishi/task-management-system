@@ -1,15 +1,22 @@
+import axios from "axios";
 import { getTask } from "../actions";
-import firebaseDb from "../../../util/firebase";
-import { collection, getDocs } from "firebase/firestore/lite";
 
-const COLLECTION_NAME = "tasks";
+const base_url = "http://localhost:9001";
 
-const fetchTasks = async (dispatch) => {
-    const tasks = collection(firebaseDb, COLLECTION_NAME);
-    const snapshot = await getDocs(tasks);
-    const response = snapshot.docs.map(doc => doc.data());
-
-    dispatch(getTask(response));
+const fetchTasks = async (dispatch, token) => {
+    try{
+        const response = await axios({
+            url: `${base_url}/private/tasks`,
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            method: "GET",
+        });
+        console.log(response.data.tasks);
+        dispatch(getTask(response.data.tasks));
+    }catch(error){
+        console.log(error);
+    }
 }
 
 export default fetchTasks;
