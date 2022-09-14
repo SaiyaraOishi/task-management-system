@@ -29,7 +29,7 @@ export default function UpdateMember() {
             console.log(name);
             // dispatch(updateMemberName({ oldName: member.name, newName: name }));
             //should be done before updating name otherwise member.name and name becomes same
-            dispatch(updateMemberNameInDb(id, { oldName: member.name, newName: name }));
+            // dispatch(updateMemberNameInDb(id, { oldName: member.name, newName: name }));
             // dispatch(updateMemberToDb(id, { name: name }));
             await updateMember(navigate, id, name, token);
         }

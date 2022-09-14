@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import updateTaskToDb from "../redux/tasks/thunk/updateTask";
+import updateTask from "../redux/tasks/thunk/updateTask";
 
 export default function UpdateTask() {
 
@@ -12,15 +12,16 @@ export default function UpdateTask() {
     const { id } = useParams();
     const task = useSelector((state) => state.tasks.task);
     const members = useSelector((state) => state.members.memberlist);
-    const dispatch = useDispatch();
+    const token = useSelector((state) => state.user.token);
+    // const dispatch = useDispatch();
 
     const titleIsValid = title.trim().length > 0;
 
     const navigate = useNavigate();
-    const onUpdateTask = () => {
+    const onUpdateTask = async () => {
         if (titleIsValid) {
             // dispatch(updateTaskToDb(id, { title: title, detail: detail, member: member }));
-            navigate("/task", { replace: true });
+            await updateTask(navigate, token, id, title, description, task.Member.id);
         }
     }
 

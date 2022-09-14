@@ -1,27 +1,25 @@
-import firebaseDb from "../../../util/firebase";
-import { doc, updateDoc } from "firebase/firestore/lite";
-import { updateMemberName, updateTask } from "../actions";
+import axios from "axios";
 
-const COLLECTION_NAME = "tasks";
-
-const updateTaskToDb = (id, { title, detail, member }) => {
-
-    return async (dispatch) => {
-        const tasks = doc(firebaseDb, COLLECTION_NAME, id);
-        const response = await updateDoc(tasks, { id: id, title: title, detail: detail, member: member });
-
-        dispatch(updateTask(response));
+const baseUrl = "http://localhost:9001";
+const updateTask = async (navigate, token, id, title, description, member) => {
+    try {
+        const response = await axios({
+            url: `${baseUrl}/private/tasks/${id}`,
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+            method: "PATCH",
+            data: {
+                title,
+                description,
+                memberId: member,
+            },
+        });
+        console.log(response.data);
+        navigate("/task");
+    } catch (error) {
+        console.log(error);
     }
+};
 
-}
-
-export const updateMemberNameInDb = (id, { oldName, newName }) => {
-    return async (dispatch) => {
-        const tasks = doc(firebaseDb, COLLECTION_NAME, id);
-        const response = await updateDoc(tasks, {...tasks, member: newName});
-
-        dispatch(updateMemberName(response));
-    }
-}
-
-export default updateTaskToDb;
+export default updateTask;
