@@ -1,18 +1,24 @@
-import firebaseDb from "../../../util/firebase";
-import { doc, updateDoc } from "firebase/firestore/lite";
-import { updateMember } from "../actions";
+import axios from "axios";
 
-const COLLECTION_NAME = "members";
+const base_url = "http://localhost:9001";
 
-const updateMemberToDb = (id, {name}) => {
-
-    return async (dispatch) => {
-        const members = doc(firebaseDb, COLLECTION_NAME, id);
-        const response = await updateDoc(members,{id: id, name: name});
-
-        dispatch(updateMember(response));
+const updateMember = async (navigate, memberId, name, token) => {
+    try{
+        const response = await axios({
+            url: `${base_url}/private/members/${memberId}`,
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            method: "PATCH",
+            data: {
+                name
+            }
+        });
+        console.log(response.data);
+        navigate("/member");
+    }catch(error){
+        console.log(error);
     }
-
 }
 
-export default updateMemberToDb;
+export default updateMember;

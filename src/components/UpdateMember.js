@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 // import { updateMemberName } from "../redux/tasks/actions";
 import updateMemberToDb from "../redux/members/thunk/updateMember";
 import { updateMemberNameInDb } from "../redux/tasks/thunk/updateTask";
+import updateMember from "../redux/members/thunk/updateMember";
 
 export default function UpdateMember() {
 
@@ -12,7 +13,7 @@ export default function UpdateMember() {
     const { id } = useParams();
     const member = useSelector((state) => state.members.member);
     const dispatch = useDispatch();
-
+    const token = useSelector((state) => state.user.token);
 
     const handleNameChange = (e) => {
         setName(e.target.value);
@@ -22,15 +23,15 @@ export default function UpdateMember() {
 
 
     const navigate = useNavigate();
-    const onUpdateMember = () => {
+    const onUpdateMember = async () => {
         if (nameIsValid) {
             console.log(member.name);
             console.log(name);
             // dispatch(updateMemberName({ oldName: member.name, newName: name }));
             //should be done before updating name otherwise member.name and name becomes same
             dispatch(updateMemberNameInDb(id, { oldName: member.name, newName: name }));
-            dispatch(updateMemberToDb(id, { name: name }));
-            navigate("/member");
+            // dispatch(updateMemberToDb(id, { name: name }));
+            await updateMember(navigate, id, name, token);
         }
     }
 
